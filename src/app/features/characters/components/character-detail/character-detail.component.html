@@ -1,0 +1,61 @@
+<div class="character-detail-container" *ngIf="character">
+  <div class="character-header">
+    <div class="character-image">
+      <img [src]="character.image" [alt]="character.name">
+    </div>
+    <div class="character-info">
+      <h1>{{ character.name }}</h1>
+      <div class="status-badge" [ngClass]="character.status.toLowerCase()">
+        {{ character.status }}
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="label">Species:</span>
+          <span>{{ character.species }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Gender:</span>
+          <span>{{ character.gender }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Type:</span>
+          <span>{{ character.type || 'Unknown' }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Origin:</span>
+          <span>{{ character.origin.name }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Location:</span>
+          <span>{{ character.location.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="episodes-section">
+    <h2>Episodes ({{ episodes.length }})</h2>
+
+    <mat-list>
+      <mat-list-item *ngFor="let episode of episodes">
+        <mat-icon matListIcon>movie</mat-icon>
+        <h3 matLine>{{ episode.name }}</h3>
+        <p matLine>{{ episode.episode }} | {{ episode.air_date }}</p>
+        <button mat-icon-button [routerLink]="['/episodes', episode.id]">
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" [routerLink]="['/characters']">
+      <mat-icon>arrow_back</mat-icon> Back to Characters
+    </button>
+  </div>
+</div>

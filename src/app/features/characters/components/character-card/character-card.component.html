@@ -1,0 +1,19 @@
+<mat-card class="character-card">
+  <img mat-card-image [src]="character.image" [alt]="character.name">
+  <mat-card-header>
+    <mat-card-title>
+      <a [routerLink]="['/characters', character.id]">{{ character.name }}</a>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <span class="status-indicator" [style.background-color]="getStatusColor()"></span>
+      {{ character.status }} - {{ character.species }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Origin:</strong> {{ character.origin.name }}</p>
+    <p><strong>Location:</strong> {{ character.location.name }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-stroked-button [routerLink]="['/characters', character.id]">VIEW DETAILS</button>
+  </mat-card-actions>
+</mat-card>

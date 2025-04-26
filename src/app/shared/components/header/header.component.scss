@@ -1,0 +1,29 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+
+  .logo {
+    height: 40px;
+    margin-right: 10px;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+nav {
+  a {
+    margin-left: 16px;
+
+    &.active-link {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    mat-icon {
+      margin-right: 8px;
+    }
+  }
+}

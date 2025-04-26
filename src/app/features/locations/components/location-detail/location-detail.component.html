@@ -1,0 +1,61 @@
+<div class="location-detail-container" *ngIf="location">
+  <div class="location-header">
+    <div class="location-info">
+      <h1>{{ location.name }}</h1>
+      <div class="location-type">{{ location.type }}</div>
+
+      <mat-divider></mat-divider>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="label">Dimension:</span>
+          <span>{{ location.dimension }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Residents:</span>
+          <span>{{ location.residents.length }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Created:</span>
+          <span>{{ location.created | date }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="residents-section">
+    <h2>Residents ({{ residents.length }})</h2>
+
+    <div *ngIf="residents.length === 0" class="no-residents">
+      <p>No residents found for this location</p>
+    </div>
+
+    <div class="residents-grid" *ngIf="residents.length > 0">
+      <mat-card class="resident-card" *ngFor="let resident of residents">
+        <img mat-card-image [src]="resident.image" [alt]="resident.name" />
+        <mat-card-header>
+          <mat-card-title>{{ resident.name }}</mat-card-title>
+          <mat-card-subtitle
+            >{{ resident.species }} - {{ resident.status }}</mat-card-subtitle
+          >
+        </mat-card-header>
+        <mat-card-actions>
+          <button
+            mat-stroked-button
+            [routerLink]="['/characters', resident.id]"
+          >
+            VIEW DETAILS
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" [routerLink]="['/locations']">
+      <mat-icon>arrow_back</mat-icon> Back to Locations
+    </button>
+  </div>
+</div>

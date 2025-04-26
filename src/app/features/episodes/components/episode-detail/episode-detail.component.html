@@ -1,0 +1,41 @@
+<div class="episode-detail-container" *ngIf="episode">
+  <div class="episode-header">
+    <div class="episode-info">
+      <div class="episode-badge">{{ episode.episode }}</div>
+      <h1>{{ episode.name }}</h1>
+      <p class="air-date">Aired on {{ episode.air_date }}</p>
+
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+  <div class="characters-section">
+    <h2>Characters ({{ characters.length }})</h2>
+
+    <div class="characters-grid">
+      <mat-card class="character-card" *ngFor="let character of characters">
+        <img mat-card-image [src]="character.image" [alt]="character.name" />
+        <mat-card-header>
+          <mat-card-title>{{ character.name }}</mat-card-title>
+          <mat-card-subtitle
+            >{{ character.species }} - {{ character.status }}</mat-card-subtitle
+          >
+        </mat-card-header>
+        <mat-card-actions>
+          <button
+            mat-stroked-button
+            [routerLink]="['/characters', character.id]"
+          >
+            VIEW DETAILS
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" [routerLink]="['/episodes']">
+      <mat-icon>arrow_back</mat-icon> Back to Episodes
+    </button>
+  </div>
+</div>
