@@ -1,0 +1,21 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+
+  .page-numbers {
+    display: flex;
+    margin: 0 8px;
+
+    button {
+      min-width: 40px;
+      margin: 0 4px;
+
+      &.active {
+        background-color: rgba(0, 0, 0, 0.1);
+        font-weight: bold;
+      }
+    }
+  }
+}

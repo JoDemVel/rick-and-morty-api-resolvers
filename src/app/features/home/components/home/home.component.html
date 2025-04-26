@@ -1,0 +1,29 @@
+<div class="home-container">
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>Ponte Rickoso App</h1>
+      <p>All the information about rick and morty you can get</p>
+    </div>
+  </div>
+
+  <div class="features-section">
+    <mat-card class="feature-card" *ngFor="let feature of features">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>{{ feature.icon }}</mat-icon>
+        <mat-card-title>{{ feature.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ feature.description }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          [routerLink]="[feature.route]"
+        >
+          EXPLORE
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

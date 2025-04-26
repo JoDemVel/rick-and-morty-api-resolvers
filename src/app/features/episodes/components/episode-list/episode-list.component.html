@@ -1,0 +1,18 @@
+<div class="episode-list-container">
+  <h1>Episodes</h1>
+
+  <div *ngIf="episodes.length > 0" class="episode-grid">
+    <app-episode-card *ngFor="let episode of episodes" [episode]="episode"></app-episode-card>
+  </div>
+
+  <div *ngIf="episodes.length === 0" class="no-results">
+    <mat-icon>sentiment_very_dissatisfied</mat-icon>
+    <p>No episodes found</p>
+  </div>
+
+  <app-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChange)="onPageChange($event)">
+  </app-pagination>
+</div>

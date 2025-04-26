@@ -1,0 +1,18 @@
+<mat-card class="episode-card">
+  <mat-card-header>
+    <mat-icon mat-card-avatar>movie</mat-icon>
+    <mat-card-title>
+      <a [routerLink]="['/episodes', episode.id]">{{ episode.name }}</a>
+    </mat-card-title>
+    <mat-card-subtitle>{{ episode.episode }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Air Date:</strong> {{ episode.air_date }}</p>
+    <p><strong>Characters:</strong> {{ episode.characters.length }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-stroked-button [routerLink]="['/episodes', episode.id]">
+      VIEW DETAILS
+    </button>
+  </mat-card-actions>
+</mat-card>
