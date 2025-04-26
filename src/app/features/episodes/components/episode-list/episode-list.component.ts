@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { EpisodeService } from '../../services/episode.service';
 import { Episode } from '../../../../core/models/episode.model';
+import { EpisodeGraphqlService } from '../../services/episode-graphql.service';
 
 @Component({
   selector: 'app-episode-list',
@@ -19,7 +20,7 @@ export class EpisodeListComponent implements OnInit {
   totalPages = 0;
 
   constructor(
-    private episodeService: EpisodeService,
+    private episodeService: EpisodeGraphqlService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -29,8 +30,8 @@ export class EpisodeListComponent implements OnInit {
 
   loadEpisodes(): void {
     this.episodeService.getEpisodes(this.currentPage).subscribe((response) => {
-      this.episodes = response.results;
-      this.totalPages = response.info.pages;
+      this.episodes = response.episodes.results;
+      this.totalPages = response.episodes.info.pages;
       this.cdr.markForCheck();
     });
   }

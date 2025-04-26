@@ -2,9 +2,9 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from '@angular/core';
-import { CharacterService } from '../../services/character.service';
+import { CharacterGraphqlService } from '../../services/character-graphql.service'; // Cambiado el servicio
 import { Character } from '../../../../core/models/character.model';
 
 @Component({
@@ -19,7 +19,7 @@ export class CharacterListComponent implements OnInit {
   totalPages = 0;
 
   constructor(
-    private characterService: CharacterService,
+    private characterService: CharacterGraphqlService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -31,8 +31,8 @@ export class CharacterListComponent implements OnInit {
     this.characterService
       .getCharacters(this.currentPage)
       .subscribe((response) => {
-        this.characters = response.results;
-        this.totalPages = response.info.pages;
+        this.characters = response.characters.results;
+        this.totalPages = response.characters.info.pages;
         this.cdr.markForCheck();
       });
   }

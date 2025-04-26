@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { LocationService } from '../../services/location.service';
 import { Location } from '../../../../core/models/location.model';
+import { LocationGraphqlService } from '../../services/location-graphql.service';
 
 @Component({
   selector: 'app-location-list',
@@ -19,7 +20,7 @@ export class LocationListComponent implements OnInit {
   totalPages = 0;
 
   constructor(
-    private locationService: LocationService,
+    private locationService: LocationGraphqlService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -31,8 +32,8 @@ export class LocationListComponent implements OnInit {
     this.locationService
       .getLocations(this.currentPage)
       .subscribe((response) => {
-        this.locations = response.results;
-        this.totalPages = response.info.pages;
+        this.locations = response.locations.results;
+        this.totalPages = response.locations.info.pages;
         this.cdr.markForCheck();
       });
   }
